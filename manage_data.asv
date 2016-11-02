@@ -1,0 +1,4 @@
+function output=manage_data(input,number_column)
+    complex_input=input*[1;1i];
+    
+end

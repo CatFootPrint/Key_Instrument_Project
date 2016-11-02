@@ -1,0 +1,50 @@
+function between_modulation(label,label_sdlc_ori,label_sdlc_my,label_sdlc_advanced)
+long=512;
+label_psk=label.*repmat([ones(1,3),zeros(1,7)],1,long);
+position_psk=find(label_psk);
+label_psk=label_psk(position_psk);
+% bpg_psk=label_sdlc_ori.*repmat([ones(1,3),zeros(1,7)],1,4096);
+bpg_psk=label_sdlc_ori(position_psk);
+% sdlc_psk=label_sdlc_my.*repmat([ones(1,3),zeros(1,7)],1,4096);
+sdlc_psk=label_sdlc_my(position_psk);
+% advanced_sdlc_psk=label_sdlc_advanced.*repmat([ones(1,3),zeros(1,7)],1,4096);
+advanced_sdlc_psk=label_sdlc_advanced(position_psk);
+aerror_psk_bpg=error_ratio(bpg_psk,label_psk);
+disp(['aerror_psk_bpg=',num2str(aerror_psk_bpg)]);
+aerror_psk_sdlc=error_ratio(sdlc_psk,label_psk);
+disp(['aerror_psk_sdlc=',num2str(aerror_psk_sdlc)]);
+aerror_psk_advanced_sdlc=error_ratio(advanced_sdlc_psk,label_psk);
+disp(['aerror_psk_advanced_sdlc=',num2str(aerror_psk_advanced_sdlc)]);
+%===============================================================================
+label_qam=label.*repmat([zeros(1,3),ones(1,3),zeros(1,4)],1,long);
+position_qam=find(label_qam);
+label_qam=label_qam(position_qam);
+% bpg_qam=label_sdlc_ori.*repmat([ones(1,3),zeros(1,7)],1,4096);
+bpg_qam=label_sdlc_ori(position_qam);
+% sdlc_qam=label_sdlc_my.*repmat([ones(1,3),zeros(1,7)],1,4096);
+sdlc_qam=label_sdlc_my(position_qam);
+% advanced_sdlc_qam=label_sdlc_advanced.*repmat([ones(1,3),zeros(1,7)],1,4096);
+advanced_sdlc_qam=label_sdlc_advanced(position_qam);
+aerror_qam_bpg=error_ratio(bpg_qam,label_qam);
+disp(['aerror_qam_bpg=',num2str(aerror_qam_bpg)]);
+aerror_qam_sdlc=error_ratio(sdlc_qam,label_qam);
+disp(['aerror_qam_sdlc=',num2str(aerror_qam_sdlc)]);
+aerror_qam_advanced_sdlc=error_ratio(advanced_sdlc_qam,label_qam);
+disp(['aerror_qam_advanced_sdlc=',num2str(aerror_qam_advanced_sdlc)]);
+%================================================================================
+label_pam=label.*repmat([zeros(1,7),ones(1,3)],1,long);
+position_pam=find(label_pam);
+label_pam=label_pam(position_pam);
+% bpg_pam=label_sdlc_ori.*repmat([ones(1,3),zeros(1,7)],1,4096);
+bpg_pam=label_sdlc_ori(position_pam);
+% sdlc_pam=label_sdlc_my.*repmat([ones(1,3),zeros(1,7)],1,4096);
+sdlc_pam=label_sdlc_my(position_pam);
+% advanced_sdlc_pam=label_sdlc_advanced.*repmat([ones(1,3),zeros(1,7)],1,4096);
+advanced_sdlc_pam=label_sdlc_advanced(position_pam);
+aerror_pam_bpg=error_ratio(bpg_pam,label_pam);
+disp(['aerror_pam_bpg=',num2str(aerror_pam_bpg)]);
+aerror_pam_sdlc=error_ratio(sdlc_pam,label_pam);
+disp(['aerror_pam_sdlc=',num2str(aerror_pam_sdlc)]);
+aerror_pam_advanced_sdlc=error_ratio(advanced_sdlc_pam,label_pam);
+disp(['aerror_pam_advanced_sdlc=',num2str(aerror_pam_advanced_sdlc)]);
+end
