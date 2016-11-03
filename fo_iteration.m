@@ -51,15 +51,15 @@ grid on;
 %iteration of frequency offset
 density_buffer=Inf*ones(length(density_ori),iteration_times);%A buffer which store the density. i-th column stores the i-th density
 number=0;
-for counter=1:iteration_times
+parfor counter=1:iteration_times
     frequency_offset=(counter-iteration_times/2)/iteration_times*2*pi;
     fprintf(['frequency offset is ',num2str(frequency_offset),'\n']);
     signal_adjust=signal.*exp(1i*frequency_offset*(1:length(signal))');
     [bandwidth_adjust,density_adjust,X_adjust,Y_adjust]=kde2d([real(signal_adjust),imag(signal_adjust)]);
     density_adjust_2D=density_adjust*ones(length(density_adjust),1);%convert the density to 2D form
     density_buffer(:,counter)=density_adjust_2D;
-    number=number+1;
-    fprintf(['There are ',num2str(iteration_times-number),' times for iteration','\n']);
+%     number=number+1;
+    fprintf(['There are ',num2str(iteration_times-counter),' times for iteration','\n']);
 end
 [max_density,position]=max(max(density_buffer));
 frequency_offset_adjust=(position-iteration_times/2)/iteration_times*2*pi;%position denotes the location of maxmun of frequency offset
