@@ -9,15 +9,8 @@
 %output:
 %signal_recover:the recovered signals
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function signal_recover=fo_recover(signal,iteration_times)
+function [signal_recover,frequency_offset]=fo_recover(signal,iteration_times)
 % iteration_times=6000;%iteration times to calculate frequency offset
-%load from csv files
-% signal_1=load('./data_test/8QAM_20dbm_1.csv');%load the signals
-% signal_1=signal_1*[1;1i];
-% signal_1=signal_1(47:(46+100*800));
-% signal_1=reshape(signal_1,100,numel(signal_1)/100);
-% signal_1=sum(signal_1);%%%%%%%%%%%
-% signal=reshape(signal_1,numel(signal_1),1);
 %Illustrate the constellation of original signal
 figure(1);
 scatter(real(signal),imag(signal),'.');
@@ -37,18 +30,18 @@ grid on;
 %iteration of frequency offset
 density_buffer=Inf*ones(length(density_ori),iteration_times);%A buffer which store the density. i-th column stores the i-th density
 number=0;
-for counter=1:iteration_times
+parfor counter=1:iteration_times
     frequency_offset=(counter-iteration_times/2)/iteration_times*2*pi;
     fprintf(['frequency offset is ',num2str(frequency_offset),'\n']);
     signal_adjust=signal.*exp(1i*frequency_offset*(1:length(signal))');
     [bandwidth_adjust,density_adjust,X_adjust,Y_adjust]=kde2d([real(signal_adjust),imag(signal_adjust)]);
     density_adjust_2D=density_adjust*ones(length(density_adjust),1);%convert the density to 2D form
     density_buffer(:,counter)=density_adjust_2D;
-    number=number+1;
-    fprintf(['There are ',num2str(iteration_times-number),' times for iteration','\n']);
+%     number=number+1;
+    fprintf(['There are ',num2str(iteration_times-counter),' times for iteration','\n']);
 end
 [max_density,position]=max(max(density_buffer));
-frequency_offset_adjust=(position-iteration_times/2)/iteration_times*2*pi;%position denotes the location of maxmun of frequency offset
+frequency_offset_adjust=(position-iteration_times/2)/iteration_times*pi/2;%position denotes the location of maxmun of frequency offset
 signal_recover=signal.*exp(1i*frequency_offset_adjust*(1:length(signal))');
 %Illustrate the constellation of recovered signal
 figure(4);
@@ -68,4 +61,5 @@ density_recover_2D=density_recover*ones(length(density_ori),1);
 plot(1:length(density_recover_2D),density_recover_2D);
 title(['2D of recovered density, frequency_offset=',num2str((position-iteration_times/2)/iteration_times*2*pi),'f_s']);
 grid on;
+frequency_offset=-frequency_offset_adjust;
 end
