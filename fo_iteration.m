@@ -13,12 +13,25 @@ clear;
 close all;
 iteration_times=6000;%iteration times to calculate frequency offset
 %load from csv files
-signal_1=load('./data_test/8QAM_20dbm_1.csv');%load the signals
-signal_1=signal_1*[1;1i];
-signal_1=signal_1(47:(46+100*800));
-signal_1=reshape(signal_1,100,numel(signal_1)/100);
-signal_1=sum(signal_1);%%%%%%%%%%%
-signal=reshape(signal_1,numel(signal_1),1);
+% signal_1=load('./data_test/8QAM_20dbm_1.csv');%load the signals
+% signal_1=signal_1*[1;1i];
+% signal_1=signal_1(47:(46+100*800));
+% signal_1=reshape(signal_1,100,numel(signal_1)/100);
+% signal_1=sum(signal_1);%%%%%%%%%%%
+% signal=reshape(signal_1,numel(signal_1),1);
+M=8;
+phase_offset=0.0;
+frequency_offset=0.03;
+number_of_code=1000;
+code=randi([0 M-1],number_of_code,1);
+QAM_mod=comm.RectangularQAMModulator('ModulationOrder',M);
+QAM_Demod=comm.RectangularQAMDemodulator('ModulationOrder',M);
+QAM_mod.PhaseOffset = phase_offset;
+s_QAM=step(QAM_mod,code);
+signal=s_QAM;
+signal=signal.*transpose(exp(1i*frequency_offset*(0:(numel(signal)-1))));
+signal=awgn(signal,10);
+% title_str=[num2str(M),'QAM'];
 %Illustrate the constellation of original signal
 figure(1);
 scatter(real(signal),imag(signal),'.');
