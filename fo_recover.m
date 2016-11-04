@@ -31,7 +31,7 @@ grid on;
 density_buffer=Inf*ones(length(density_ori),iteration_times);%A buffer which store the density. i-th column stores the i-th density
 number=0;
 parfor counter=1:iteration_times
-    frequency_offset=(counter-iteration_times/2)/iteration_times*2*pi;
+    frequency_offset=(counter-iteration_times/2)/iteration_times*pi/2;
     fprintf(['frequency offset is ',num2str(frequency_offset),'\n']);
     signal_adjust=signal.*exp(1i*frequency_offset*(1:length(signal))');
     [bandwidth_adjust,density_adjust,X_adjust,Y_adjust]=kde2d([real(signal_adjust),imag(signal_adjust)]);
