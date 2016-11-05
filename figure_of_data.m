@@ -1,7 +1,7 @@
 clear;
 close all;
 N=2;
-num_of_iteration=200000;
+num_of_iteration=100000;
 QPSK1=load('./data/4psk_-30dBm.csv');
 [QPSK1_complex,QPSK1_real]=manage_data(QPSK1,N);
 QPSK2=load('./data/4psk_-30dBm-2.csv');
@@ -37,6 +37,6 @@ axis equal;
 grid on;
 load chirp
 sound(y,Fs)
-output=my_spectral_cluster(signal_recover,257);
-[IDX,center_k_means]=kmeans([real(signal_recover),imag(signal_recover)],257);
-center_k_means=draw_cluster(signal_recover,IDX,257);
+output=my_spectral_cluster(signal_recover,17);
+[IDX,center_k_means]=kmeans([real(signal_recover),imag(signal_recover)],17);
+center_k_means=draw_cluster(signal_recover,IDX,17);
