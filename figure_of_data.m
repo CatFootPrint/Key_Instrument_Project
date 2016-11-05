@@ -22,8 +22,10 @@ PSK16_1=load('./data/16psk_-20dBm_1.csv');
 [PSK16_1_complex,PSK16_1_real]=manage_data(PSK16_1,N);
 QAM256_2=load('./data/256qam_-21dBm_2.csv');
 [QAM256_2_complex,QAM256_2_real]=manage_data(QAM256_2,N);
+QAM32_2=load('./data/32qam_-22dBm-2.csv');
+[QAM32_2_complex,QAM32_2_real]=manage_data(QAM32_2,N);
 % QAM32_2_complex=QAM32_2_complex(1:400);
-signal=transpose(PSK16_1_complex);
+signal=transpose(QAM16_1_complex);
 % [signal,phase_offset]=phase_recover(signal);
 signal=signal/max(max(abs(signal)));
 figure(1);
@@ -37,6 +39,6 @@ axis equal;
 grid on;
 load chirp
 sound(y,Fs)
-output=my_spectral_cluster(signal_recover,17);
-[IDX,center_k_means]=kmeans([real(signal_recover),imag(signal_recover)],17);
-center_k_means=draw_cluster(signal_recover,IDX,17);
+% output=my_spectral_cluster(signal_recover,17);
+% [IDX,center_k_means]=kmeans([real(signal_recover),imag(signal_recover)],17);
+% center_k_means=draw_cluster(signal_recover,IDX,17);
