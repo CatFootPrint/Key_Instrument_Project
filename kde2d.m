@@ -76,19 +76,6 @@ function [bandwidth,density,X,Y]=kde2d(data,n,MIN_XY,MAX_XY)
 %  Reference: Z. I. Botev, J. F. Grotowski and D. P. Kroese
 %             "KERNEL DENSITY ESTIMATION VIA DIFFUSION" ,Submitted to the
 %             Annals of Statistics, 2009
-% hx=data(:,1);
-% hy=data(:,2);
-% hx=median(abs(hx-median(hx)))/0.6745*(4/3/numel(data))^0.2;
-% hy=median(abs(hy-median(hy)))/0.6745*(4/3/numel(data))^0.2;
-% sigma=(hx+hy)/2;
-% sigma=100*sqrt(var(data*[1;1i]));
-% data_matrix=data*[1;1i];
-% data_matrix_tem=repmat(data_matrix,1,numel(data_matrix));
-% data_distance=abs(data_matrix_tem-transpose(data_matrix_tem));
-% % sigma=sum(sum(data_distance))/(numel(data_distance)-sqrt(numel(data_distance)));
-% sigma=max(var(data_distance));
-% fprintf(['/sigma=',num2str(sigma),'\n']);
-% sigma=sqrt(var(data*[1;1i]))*(size(data,1))^(1/6);
 sigma=1;
 global N A2 I
 if nargin<2
@@ -212,3 +199,23 @@ end
 % counts.
 binned_data = accumarray(bins(all(bins>0,2),:),1/nrows,M(ones(1,ncols)));
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
