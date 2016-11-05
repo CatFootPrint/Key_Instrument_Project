@@ -1,7 +1,7 @@
 clear;
 close all;
 N=2;
-num_of_iteration=80000;
+num_of_iteration=200000;
 QPSK1=load('./data/4psk_-30dBm.csv');
 [QPSK1_complex,QPSK1_real]=manage_data(QPSK1,N);
 QPSK2=load('./data/4psk_-30dBm-2.csv');
@@ -10,7 +10,7 @@ PSK8_3=load('./data/8psk_-25dBm.csv');
 [PSK8_3_complex,PSK8_3_real]=manage_data(PSK8_3,N);
 QAM16_1=load('./data/16qam_-22dBm-1.csv');
 [QAM16_1_complex,QAM16_1_real]=manage_data(QAM16_1,N);
-QAM16_2=load('./data/16qam_-22dBm-2.csv');
+QAM16_2=load('./data/16qam_-22dBm-1.csv');
 [QAM16_2_complex,QAM16_2_real]=manage_data(QAM16_2,N);
 QAM256_1=load('./data/256qam_-22dBm-1.csv');
 [QAM256_1_complex,QAM256_1_real]=manage_data(QAM256_1,N);
@@ -18,8 +18,10 @@ QAM128_1=load('./data/128qam_-30dBm-2.csv');
 [QAM128_1_complex,QAM128_1_real]=manage_data(QAM128_1,N);
 PSK32_1=load('./data/32psk_-25dBm-2.csv');
 [PSK32_1_complex,PSK32_1_real]=manage_data(PSK32_1,N);
-PSK16_1=load('./data/16psk_-30dBm-2.csv');
+PSK16_1=load('./data/16psk_-20dBm_1.csv');
 [PSK16_1_complex,PSK16_1_real]=manage_data(PSK16_1,N);
+QAM256_2=load('./data/256qam_-21dBm_2.csv');
+[QAM256_2_complex,QAM256_2_real]=manage_data(QAM256_2,N);
 % QAM32_2_complex=QAM32_2_complex(1:400);
 signal=transpose(PSK16_1_complex);
 % [signal,phase_offset]=phase_recover(signal);
@@ -35,3 +37,6 @@ axis equal;
 grid on;
 load chirp
 sound(y,Fs)
+output=my_spectral_cluster(signal_recover,257);
+[IDX,center_k_means]=kmeans([real(signal_recover),imag(signal_recover)],257);
+center_k_means=draw_cluster(signal_recover,IDX,257);
