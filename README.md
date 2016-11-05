@@ -1,6 +1,8 @@
 # Key_Instrument_Project
 This program is used to identify the signals transmittd from E4438C and received by Black Bird.
+
 The detail discription of programs are as follows.
+
 1. figure_of_data.m is the program to eliminate the frequency offset of received signals.
 2. fo_recover.m is the function to eliminate the frequency offset and figure_of_data.m adopts fo_cover.m to recover signals.
 3. main.m is the program which adopts the proximal gradient decent method to update the dictionary and update the dictionary set.
