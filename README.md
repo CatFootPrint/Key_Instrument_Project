@@ -21,4 +21,4 @@ There are five files here.
 2. data stores the data received. The transmitter is E4438C and the receiver is Black Bird.
 3. Result stores the data recovered through the frequency offset eliminating function.
 4. STING_result stores the data recover through the STING method.
-5. SDLC_result stores the result of proximal gradient descent based result.
+5. SDLC_result stores the result of proximal gradient descent based dictionary learning method.
