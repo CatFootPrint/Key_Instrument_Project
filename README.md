@@ -14,3 +14,11 @@ The detail discription of programs are as follows.
 9. syn.m is the function for generating the m sequence.
 10. spectral_cluster.m is the function for spectral clustering proposed by Andrew Ng.
 11. my_spectral_cluster.m is the function for spectral clustering proposed by myself.
+
+There are five files here.
+
+1. 1102 stores the data received in Nov. 2nd and these signals are sent with M sequence.
+2. data stores the data received. The transmitter is E4438C and the receiver is Black Bird.
+3. Result stores the data recovered through the frequency offset eliminating function.
+4. STING_result stores the data recover through the STING method.
+5. SDLC_result stores the result of proximal gradient descent based result.
