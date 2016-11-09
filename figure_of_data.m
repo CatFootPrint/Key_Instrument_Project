@@ -3,7 +3,7 @@ close all;
 N=2;
 start_time=clock;
 num_of_iteration=10000;
-signal_name='QAM_16_2_complex';%The name of file you want to read.
+signal_name='QAM_128_14_complex';%The name of file you want to read.
 % %QPSK---------------------------------------------
 % QPSK_0=load('./data/4psk_-30dBm.csv');%Fail
 % [QPSK_0_complex,QPSK_0_real]=manage_data(QPSK_0,N);
@@ -24,7 +24,6 @@ signal_name='QAM_16_2_complex';%The name of file you want to read.
 % [PSK_8_4_complex,PSK_8_4_real]=manage_data(PSK_8_4,N);
 % PSK_8_5=load('./data/8psk_-30dBm-2.csv');%OK
 % [PSK_8_5_complex,PSK_8_5_real]=manage_data(PSK_8_5,N);
-%------------------------------------------
 % PSK_8_6=load('./data/8psk_-25dBm_1.csv');%Fail
 % [PSK_8_6_complex,PSK_8_6_real]=manage_data(PSK_8_6,N);
 % PSK_8_7=load('./data/8psk_-25dBm_2.csv');%OK
@@ -124,7 +123,7 @@ QAM_16_2=load('./data/16qam_-22dBm-1.csv');%OK
 % ----------------------------------------------------------------
 % PSK_32_1=load('./data/32psk_-25dBm.csv');%Fail
 % [PSK_32_1_complex,PSK_32_1_real]=manage_data(PSK_32_1,N);
-%----------------------------------------------------------------
+%32QAM----------------------------------------------------------------
 % QAM_32_1=load('./data/32qam_-22dBm.csv');%Fail
 % [QAM_32_1_complex,QAM_32_1_real]=manage_data(QAM_32_1,N);
 % QAM_32_2=load('./data/32qam_-22dBm-1.csv');%Fail
@@ -158,8 +157,8 @@ QAM_16_2=load('./data/16qam_-22dBm-1.csv');%OK
 % [QAM_64_6_complex,QAM_64_6_real]=manage_data(QAM_64_6,N);
 % QAM_64_7=load('./data/64qam_-25dBm_6.csv');%Fail
 % [QAM_64_7_complex,QAM_64_7_real]=manage_data(QAM_64_7,N);
-QAM_64_8=load('./data/64qam_-25dBm_7.csv');%Fail
-[QAM_64_8_complex,QAM_64_8_real]=manage_data(QAM_64_8,N);
+% QAM_64_8=load('./data/64qam_-25dBm_7.csv');%FAIL
+% [QAM_64_8_complex,QAM_64_8_real]=manage_data(QAM_64_8,N);
 %----------------------------------------------------------------
 % QAM_128_1=load('./data/128qam_-19dBm_1.csv');%Fail
 % [QAM_128_1_complex,QAM_128_1_real]=manage_data(QAM_128_1,N);
@@ -187,17 +186,33 @@ QAM_64_8=load('./data/64qam_-25dBm_7.csv');%Fail
 % [QAM_128_12_complex,QAM_128_12_real]=manage_data(QAM_128_12,N);
 % QAM_128_13=load('./data/128qam_-25dBm_5.csv');%Fail
 % [QAM_128_13_complex,QAM_128_13_real]=manage_data(QAM_128_13,N);
-% QAM_128_14=load('./data/128qam_-25dBm_6.csv');%OK
-% [QAM_128_14_complex,QAM_128_14_real]=manage_data(QAM_128_14,N);
+QAM_128_14=load('./data/128qam_-25dBm_6.csv');%OK
+[QAM_128_14_complex,QAM_128_14_real]=manage_data(QAM_128_14,N);
 % QAM_128_15=load('./data/128qam_-25dBm_7.csv');%Fail
 % [QAM_128_15_complex,QAM_128_15_real]=manage_data(QAM_128_15,N);
 %----------------------------------------------------------------
 % QAM_256_1=load('./data/256qam_-20dBm_1.csv');%Fail
 % [QAM_256_1_complex,QAM_256_1_real]=manage_data(QAM_256_1,N);
+% QAM_256_2=load('./data/256qam_-25dBm_1.csv');%Fail
+% [QAM_256_2_complex,QAM_256_2_real]=manage_data(QAM_256_2,N);
+% QAM_256_3=load('./data/256qam_-25dBm_2.csv');%Fail
+% [QAM_256_3_complex,QAM_256_3_real]=manage_data(QAM_256_3,N);
+% QAM_256_4=load('./data/256qam_-25dBm_3.csv');%Fail
+% [QAM_256_4_complex,QAM_256_4_real]=manage_data(QAM_256_4,N);
+% QAM_256_5=load('./data/256qam_-25dBm_4.csv');%Fail
+% [QAM_256_5_complex,QAM_256_5_real]=manage_data(QAM_256_5,N);
+% QAM_256_6=load('./data/256qam_-22dBm_1.csv');%Fail
+% [QAM_256_6_complex,QAM_256_6_real]=manage_data(QAM_256_6,N);
+% QAM_256_7=load('./data/256qam_-22dBm_2.csv');%Fail
+% [QAM_256_7_complex,QAM_256_7_real]=manage_data(QAM_256_7,N);
+% QAM_256_8=load('./data/256qam_-23dBm_1.csv');%Fail
+% [QAM_256_8_complex,QAM_256_8_real]=manage_data(QAM_256_8,N);
+% QAM_256_9=load('./data/256qam_-23dBm_2.csv');%Fail
+% [QAM_256_9_complex,QAM_256_9_real]=manage_data(QAM_256_9,N);
 %====================================================================
 %====================================================================
 %====================================================================
-eval(['signal=transpose(',signal_name,'(1:2000));']);%OK
+eval(['signal=transpose(',signal_name,'(1:4000));']);%OK
 
 
 
