@@ -3,62 +3,33 @@ close all;
 % save('./Result/center_128QAM.mat','center');save('./Result/cluster_128QAM.mat','L');
 % function STING_DEMO()
 % % Input the data
-% load('./Data/recover_128QAM.mat');
-% load('./Data/recover_8PSK.mat');
-% load('./Data/recover_16PSK.mat');
-% load('./Data/record_256QAM_-19dBm.mat');
-% load('./Data/recover_128QAM_-19dBm_2.mat');
-% load('./Data/recover_16QAM.mat');
-% %==========================================================
-% load('./Data/recover_PSK_8_-25dBm_0.mat');
-% load('./Data/recover_PSK_8_-25dBm_2.mat');%Fail
-% load('./Data/recover_PSK_8_-30dBm_0.mat');%Fail
-% load('./Data/recover_PSK_8_-30dBm_1.mat');
-% load('./Data/recover_PSK_8_-30dBm_2.mat');
-% %==========================================================
-% load('./Data/recover_16PSK.mat');
-% load('./Data/recover_PSK_16_-20dBm_1.mat');
-% load('./Data/recover_PSK_16_-21dBm_1.mat');
-% load('./Data/recover_PSK_16_-21dBm_2.mat');%Fail
-% load('./Data/recover_PSK_16_-22dBm_1.mat');%Fail
-% load('./Data/recover_PSK_16_-22dBm_2.mat');%Fail
-% load('./Data/recover_PSK_16_-23dBm_1.mat');%Fail
-% load('./Data/recover_PSK_16_-25dBm_0.mat');%Fail
-% load('./Data/recover_PSK_16_-25dBm_1.mat');%Fail
-% load('./Data/recover_PSK_16_-28dBm.mat');%Fail
-% load('./Data/recover_PSK_16_-28dBm_1.mat');%Fail
-% load('./Data/recover_PSK_16_-28dBm_2.mat');%Fail
-% load('./Data/recover_PSK_16_-30dBm.mat');%Fail
-% load('./Data/recover_PSK_16_-30dBm_1.mat');%Fail
-% load('./Data/recover_PSK_16_-30dBm_2.mat');%Fail
-% %==========================================================
-load('./Data/recover_16QAM.mat');
-% load('./Data/recover_QAM_16_-22dBm_0.mat');%Fail
-% load('./Data/recover_QAM_16_-22dBm_1.mat');%Fail
-% load('./Data/recover_QAM_16_-22dBm_2.mat');%Fail
-% %==========================================================
-% load('./Data/recover_QAM_32_-22dBm_0.mat');%Fail
-% load('./Data/recover_QAM_32_-22dBm_-1.mat');%Fail
-% %==========================================================
-% load('./Data/recover_QAM_64_-19dBm_1.mat');%Fail
-% %==========================================================
-% load('./Data/recover_QAM_128_-19dBm_1.mat');%Fail
-% load('./Data/recover_QAM_128_-19dBm_2.mat');%Fail
-% load('./Data/recover_QAM_128_-22dBm_0.mat');%Fail
-% load('./Data/recover_QAM_128_-22dBm_1.mat');%Fail
-% load('./Data/recover_QAM_128_-22dBm_2.mat');%Fail
-% load('./Data/recover_QAM_128_-30dBm_0.mat');
-% load('./Data/recover_QAM_128_-30dBm_1.mat');%Fail
-% load('./Data/recover_QAM_128_-30dBm_2.mat');%Fail
-% load('./Data/recover_QAM_128_-30dBm_-1.mat');%Fail
-% load('./Data/recover_QAM_128_-30dBm_-2.mat');
-% %==========================================================
-% load('./Data/recover_QAM_256_-20dBm_-1.mat');%Fail
-% %==========================================================
-% load('./Data/recover_QPSK_-30dBm.mat');%Cannot classify through STING.
-% load('./Data/recover_QPSK_-30dBm-1.mat');
-% load('./Data/recover_QPSK_-30dBm-2.mat');
-%==========================================================
+% load('./Result/Frequency_Offset_Recover/PSK_8_0_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_8_4_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_8_5_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_8_7_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_8_8_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_8_9_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_8_10_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_8_11_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_1_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_2_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_6_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_7_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_14_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_19_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_21_complex.mat');
+% load('./Result/Frequency_Offset_Recover/PSK_16_22_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_16_2_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_16_10_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_16_11_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_16_15_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_16_17_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_32_3_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_128_7_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QAM_128_14_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QPSK_1_complex.mat');
+% load('./Result/Frequency_Offset_Recover/QPSK_2_complex.mat');
+%=======================================================================
 signal_recover=signal_recover/(max(max(abs(signal_recover))));
 DATA=[real(signal_recover),imag(signal_recover)];
 
@@ -68,7 +39,7 @@ Y = DATA(:,2);   % Y-coordinate
 GRID = [];       % grid division parameter. If choose[], is means that we estimate the length of square throuth uniform distribution.
 DENSITY =1.5;      % The threshold of points. Let a denotes the number of point locating in square A. If a<DENSITY, we do not select this square, otherwise, we select this square.
 NEIGHBOR = 8;    % Choose 4 or 8. The number of neighbourhood we test.
-MINPTS = 6;      % If the distance of two clusters is less than MINPTS, we combine these two clusters into a bigger one.
+MINPTS = 4;      % If the distance of two clusters is less than MINPTS, we combine these two clusters into a bigger one.
 
 % STING CLUSTERING
 [~,center,~]=STING(X,Y,GRID,DENSITY,NEIGHBOR,MINPTS,'Color','b','LineWidth',1,'LineStyle','-');
@@ -91,7 +62,11 @@ MINPTS = 6;      % If the distance of two clusters is less than MINPTS, we combi
 % [L,center,number_of_cluster]=STING(X,Y,GRID,DENSITY,NEIGHBOR,MINPTS,'Color','b','LineWidth',1,'LineStyle','-');
 % % %---------------------------------------------------------------------------------------------------------------
 center_complex=center*[1;1i];
-phase=mean(angle(center_complex));
+angle_matrix=angle(center_complex);
+% diff(angle_matrix)
+% angle_matrix=find(angle_matrix<=pi/2);
+% angle_matrix=find(angle_matrix>=-pi/2);
+phase=mean((sort((angle_matrix))));
 center_complex=center_complex*exp(-1i*phase);
 % center=[real(center_complex),imag(center_complex)];
 % %---------------------------------------------------------------------------------------------------------------
