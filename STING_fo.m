@@ -19,7 +19,7 @@ close all;
 % load('./Result/Frequency_Offset_Recover/PSK_16_19_complex.mat');
 % load('./Result/Frequency_Offset_Recover/PSK_16_21_complex.mat');
 % load('./Result/Frequency_Offset_Recover/PSK_16_22_complex.mat');
-% load('./Result/Frequency_Offset_Recover/QAM_16_2_complex.mat');
+load('./Result/Frequency_Offset_Recover/QAM_16_2_complex.mat');
 % load('./Result/Frequency_Offset_Recover/QAM_16_10_complex.mat');
 % load('./Result/Frequency_Offset_Recover/QAM_16_11_complex.mat');
 % load('./Result/Frequency_Offset_Recover/QAM_16_15_complex.mat');
